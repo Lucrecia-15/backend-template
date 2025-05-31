@@ -1,81 +1,108 @@
-# WebApp boilerplate with React JS and Flask API
+# Backend Template with React JS and Flask API
 
-Build web applications using React.js for the front end and python/flask for your backend API.
+Build web applications using React.js for the frontend and Python/Flask for your backend API.
 
-- Documentation can be found here: https://start.4geeksacademy.com/starters/react-flask
-- Here is a video on [how to use this template](https://www.loom.com/share/f37c6838b3f1496c95111e515e83dd9b)
-- Integrated with Pipenv for package managing.
-- Fast deployment to heroku [in just a few steps here](https://start.4geeksacademy.com/backend/deploy-heroku-posgres).
-- Use of .env file.
-- SQLAlchemy integration for database abstraction.
+- Documentation can be found here: https://start.4geeksacademy.com/starters/react-flask  
+- Here is a video on [how to use this template](https://www.loom.com/share/f37c6838b3f1496c95111e515e83dd9b)  
+- Integrated with Pipenv for backend package management and npm/yarn for frontend dependencies.  
+- Fast deployment to Heroku and Render.  
+- Use of `.env` file for environment variables.  
+- SQLAlchemy integration for database ORM.
 
-### 1) Installation:
+---
 
-> If you use Github Codespaces (recommended) or Gitpod this template will already come with Python, Node and the Posgres Database installed. If you are working locally make sure to install Python 3.10, Node 
+### 1) Backend Installation
 
-It is recomended to install the backend first, make sure you have Python 3.8, Pipenv and a database engine (Posgress recomended)
+If you use Github Codespaces (recommended) or Gitpod, this template will already have Python, Node.js, and PostgreSQL installed. If you are working locally, make sure you have installed:
 
-1. Install the python packages: `$ pipenv install`
-2. Create a .env file based on the .env.example: `$ cp .env.example .env`
-3. Install your database engine and create your database, depending on your database you have to create a DATABASE_URL variable with one of the possible values, make sure you replace the valudes with your database information:
+- Python 3.8 or higher  
+- Pipenv  
+- A database engine (PostgreSQL recommended)
 
-| Engine    | DATABASE_URL                                        |
-| --------- | --------------------------------------------------- |
-| SQLite    | sqlite:////test.db                                  |
-| MySQL     | mysql://username:password@localhost:port/example    |
-| Postgress | postgres://username:password@localhost:5432/example |
+Steps:
 
-4. Migrate the migrations: `$ pipenv run migrate` (skip if you have not made changes to the models on the `./src/api/models.py`)
-5. Run the migrations: `$ pipenv run upgrade`
-6. Run the application: `$ pipenv run start`
+1. Install the Python packages:
 
-> Note: Codespaces users can connect to psql by typing: `psql -h localhost -U gitpod example`
+```bash
+pipenv install
+Create a .env file based on .env.example:
 
-### Undo a migration
+bash
+Copiar
+Editar
+cp .env.example .env
+Install and configure your database engine. Set the DATABASE_URL environment variable accordingly in .env:
 
-You are also able to undo a migration by running
+Engine	DATABASE_URL
+SQLite	sqlite:////test.db
+MySQL	mysql://username:password@localhost:port/example
+PostgreSQL	postgres://username:password@localhost:5432/example
 
-```sh
-$ pipenv run downgrade
-```
+Run the migrations to create tables:
 
-### Backend Populate Table Users
+bash
+Copiar
+Editar
+pipenv run migrate
+pipenv run upgrade
+Start the backend application:
 
-To insert test users in the database execute the following command:
+bash
+Copiar
+Editar
+pipenv run start
+Note: Codespaces users can connect to psql by running:
+psql -h localhost -U gitpod example
 
-```sh
-$ flask insert-test-users 5
-```
+Undo a migration
+You can undo a migration by running:
 
-And you will see the following message:
+bash
+Copiar
+Editar
+pipenv run downgrade
+Backend: Populate Users Table
+To insert test users into the database, run:
 
-```
-  Creating test users
-  test_user1@test.com created.
-  test_user2@test.com created.
-  test_user3@test.com created.
-  test_user4@test.com created.
-  test_user5@test.com created.
-  Users created successfully!
-```
+bash
+Copiar
+Editar
+flask insert-test-users 5
+Expected output:
 
-### **Important note for the database and the data inside it**
+nginx
+Copiar
+Editar
+Creating test users
+test_user1@test.com created.
+test_user2@test.com created.
+test_user3@test.com created.
+test_user4@test.com created.
+test_user5@test.com created.
+Users created successfully!
+To automate adding more test data, edit the insert_test_data function in src/api/commands.py.
 
-Every Github codespace environment will have **its own database**, so if you're working with more people eveyone will have a different database and different records inside it. This data **will be lost**, so don't spend too much time manually creating records for testing, instead, you can automate adding records to your database by editing ```commands.py``` file inside ```/src/api``` folder. Edit line 32 function ```insert_test_data``` to insert the data according to your model (use the function ```insert_test_users``` above as an example). Then, all you need to do is run ```pipenv run insert-test-data```.
+2) Frontend Manual Installation
+Make sure you are using Node.js version 14 or higher, and that the backend is already installed and running.
 
-### Front-End Manual Installation:
+Install the frontend packages:
 
--   Make sure you are using node version 14+ and that you have already successfully installed and runned the backend.
+bash
+Copiar
+Editar
+npm install
+Start the frontend development server:
 
-1. Install the packages: `$ npm install`
-2. Start coding! start the webpack dev server `$ npm run start`
+bash
+Copiar
+Editar
+npm run start
+Deploy your website!
+This boilerplate is ready to deploy with Render.com and Heroku in minutes. Please check the official deployment documentation for details.
 
-## Publish your website!
+Contributors
+This template was built as part of the 4Geeks Academy Coding Bootcamp by Alejandro Sanchez and many other contributors.
 
-This boilerplate it's 100% read to deploy with Render.com and Heroku in a matter of minutes. Please read the [official documentation about it](https://start.4geeksacademy.com/deploy).
+Learn more about our Full Stack Developer Course, and Data Science Bootcamp.
 
-### Contributors
-
-This template was built as part of the 4Geeks Academy [Coding Bootcamp](https://4geeksacademy.com/us/coding-bootcamp) by [Alejandro Sanchez](https://twitter.com/alesanchezr) and many other contributors. Find out more about our [Full Stack Developer Course](https://4geeksacademy.com/us/coding-bootcamps/part-time-full-stack-developer), and [Data Science Bootcamp](https://4geeksacademy.com/us/coding-bootcamps/datascience-machine-learning).
-
-You can find other templates and resources like this at the [school github page](https://github.com/4geeksacademy/).
+Find more templates and resources at the 4Geeks Academy GitHub page.
