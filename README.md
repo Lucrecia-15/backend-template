@@ -1,5 +1,3 @@
-# Creo el archivo README modificado para backend_template en formato markdown
-readme_content = """
 # Backend Template with React JS and Flask API
 
 Build web applications using React.js for the frontend and Python/Flask for your backend API.
